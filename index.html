@@ -125,6 +125,112 @@
 
     </section>
 
+    <!-- Digital Learning Modules -->
+<!-- Digital Learning Modules -->
+<section class="learning-section" id="learning">
+
+    <h2 data-en="Digital Learning Modules"
+        data-kn="ಡಿಜಿಟಲ್ ಕಲಿಕಾ ಘಟಕಗಳು">
+        Digital Learning Modules
+    </h2>
+
+    <p data-en="Learn digital skills for everyday life."
+       data-kn="ದೈನಂದಿನ ಜೀವನಕ್ಕೆ ಅಗತ್ಯವಾದ ಡಿಜಿಟಲ್ ಕೌಶಲ್ಯಗಳನ್ನು ಕಲಿಯಿರಿ.">
+        Learn digital skills for everyday life.
+    </p>
+
+    <div class="learning-grid">
+
+        <div class="learning-card">
+            <h3 data-en="🛡️ Online Safety & Scam Awareness"
+                data-kn="🛡️ ಆನ್‌ಲೈನ್ ಸುರಕ್ಷತೆ ಮತ್ತು ವಂಚನೆಗಳ ಅರಿವು">
+                🛡️ Online Safety & Scam Awareness
+            </h3>
+
+            <p data-en="Learn how to identify online scams and stay safe."
+               data-kn="ಆನ್‌ಲೈನ್ ವಂಚನೆಗಳನ್ನು ಗುರುತಿಸಿ ಸುರಕ್ಷಿತವಾಗಿರುವುದನ್ನು ಕಲಿಯಿರಿ.">
+                Learn how to identify online scams and stay safe.
+            </p>
+
+            <button class="learning-btn"
+                    onclick="openLesson('safety')"
+                    data-en="Start Learning →"
+                    data-kn="ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ →">
+                Start Learning →
+            </button>
+        </div>
+
+        <div class="learning-card">
+            <h3 data-en="💳 UPI & Digital Payments"
+                data-kn="💳 UPI ಮತ್ತು ಡಿಜಿಟಲ್ ಪಾವತಿಗಳು">
+                💳 UPI & Digital Payments
+            </h3>
+
+            <p data-en="Learn how to make safe digital payments."
+               data-kn="ಸುರಕ್ಷಿತವಾಗಿ ಡಿಜಿಟಲ್ ಪಾವತಿಗಳನ್ನು ಮಾಡುವುದನ್ನು ಕಲಿಯಿರಿ.">
+                Learn how to make safe digital payments.
+            </p>
+
+            <button class="learning-btn"
+                    onclick="openLesson('upi')"
+                    data-en="Start Learning →"
+                    data-kn="ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ →">
+                Start Learning →
+            </button>
+        </div>
+
+        <div class="learning-card">
+            <h3 data-en="📱 Smartphone & Internet Basics"
+                data-kn="📱 ಸ್ಮಾರ್ಟ್‌ಫೋನ್ ಮತ್ತು ಇಂಟರ್ನೆಟ್ ಮೂಲಭೂತಗಳು">
+                📱 Smartphone & Internet Basics
+            </h3>
+
+            <p data-en="Learn smartphone and internet basics."
+               data-kn="ಸ್ಮಾರ್ಟ್‌ಫೋನ್ ಮತ್ತು ಇಂಟರ್ನೆಟ್‌ನ ಮೂಲಭೂತ ವಿಷಯಗಳನ್ನು ಕಲಿಯಿರಿ.">
+                Learn smartphone and internet basics.
+            </p>
+
+            <button class="learning-btn"
+                    onclick="openLesson('smartphone')"
+                    data-en="Start Learning →"
+                    data-kn="ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ →">
+                Start Learning →
+            </button>
+        </div>
+
+        <div class="learning-card">
+            <h3 data-en="🏛️ Useful Online Public Services"
+                data-kn="🏛️ ಉಪಯುಕ್ತ ಆನ್‌ಲೈನ್ ಸಾರ್ವಜನಿಕ ಸೇವೆಗಳು">
+                🏛️ Useful Online Public Services
+            </h3>
+
+            <p data-en="Learn about useful online government services."
+               data-kn="ಉಪಯುಕ್ತ ಆನ್‌ಲೈನ್ ಸರ್ಕಾರಿ ಸೇವೆಗಳ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ.">
+                Learn about useful online government services.
+            </p>
+
+            <button class="learning-btn"
+                    onclick="openLesson('services')"
+                    data-en="Start Learning →"
+                    data-kn="ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ →">
+                Start Learning →
+            </button>
+        </div>
+
+    </div>
+
+    <div id="lesson-area" hidden>
+        <button onclick="closeLesson()"
+                data-en="Close Lesson"
+                data-kn="ಪಾಠವನ್ನು ಮುಚ್ಚಿ">
+            Close Lesson
+        </button>
+
+        <h3 id="lesson-title"></h3>
+        <div id="lesson-content"></div>
+    </div>
+
+</section>
     <!-- Digital Safety Quiz -->
     <section class="quiz" id="quiz">
 

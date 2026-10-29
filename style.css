@@ -495,3 +495,106 @@ main {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* Digital Learning Modules */
+
+.learning-section {
+    padding: 50px 20px;
+    text-align: center;
+    background: #f0f7ff;
+}
+
+.learning-section > h2 {
+    font-size: 32px;
+    color: #123b66;
+    margin-bottom: 10px;
+}
+
+.learning-section > p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.learning-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.learning-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.learning-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+}
+
+.learning-card h3 {
+    color: #164e83;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.learning-card p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.learning-card button,
+#lesson-area button {
+    background: #1769aa;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.learning-card button:hover,
+#lesson-area button:hover {
+    background: #104b7a;
+}
+
+#lesson-area {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+#lesson-area h3 {
+    color: #164e83;
+}
+
+#lesson-area li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+#lesson-area[hidden] {
+    display: none;
+}
+
+/* Mobile screen layout */
+@media (max-width: 600px) {
+    .learning-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-section > h2 {
+        font-size: 26px;
+    }
+}
