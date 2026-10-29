@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DigitalSaathi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top bar: name + language switch -->
+  <header class="topbar">
+    <div class="brand">DigitalSaathi</div>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button id="btn-en" class="lang-btn active" type="button">English</button>
+      <button id="btn-kn" class="lang-btn" type="button">ಕನ್ನಡ</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Welcome -->
+    <section class="welcome">
+      <h1 data-en="Digital Literacy for Everyone" data-kn="ಎಲ್ಲರಿಗಾಗಿ ಡಿಜಿಟಲ್ ಸಾಕ್ಷರತೆ">Digital Literacy for Everyone</h1>
+      <p data-en="Choose what you want to learn." data-kn="ನೀವು ಏನು ಕಲಿಯಬೇಕು ಎಂದು ಆಯ್ಕೆ ಮಾಡಿ.">Choose what you want to learn.</p>
+    </section>
+
+    <!-- Safety reminder -->
+    <div class="safety" role="note">
+      <strong data-en="Remember:" data-kn="ನೆನಪಿಡಿ:">Remember:</strong>
+      <span data-en="Never share your UPI PIN or OTP with anyone." data-kn="ನಿಮ್ಮ UPI ಪಿನ್ ಅಥವಾ OTP ಅನ್ನು ಯಾರೊಂದಿಗೂ ಹಂಚಿಕೊಳ್ಳಬೇಡಿ.">Never share your UPI PIN or OTP with anyone.</span>
+    </div>
+
+    <!-- Five learning topics -->
+    <section class="topics">
+      <a class="topic" href="#">
+        <span class="icon" aria-hidden="true">📱</span>
+        <span data-en="Learn Smartphone Basics" data-kn="ಸ್ಮಾರ್ಟ್‌ಫೋನ್ ಮೂಲಭೂತ ಅಂಶಗಳನ್ನು ಕಲಿಯಿರಿ">Learn Smartphone Basics</span>
+      </a>
+      <a class="topic" href="#">
+        <span class="icon" aria-hidden="true">💳</span>
+        <span data-en="Learn Online Payments" data-kn="ಆನ್‌ಲೈನ್ ಪಾವತಿಗಳನ್ನು ಕಲಿಯಿರಿ">Learn Online Payments</span>
+      </a>
+      <a class="topic" href="#">
+        <span class="icon" aria-hidden="true">🌐</span>
+        <span data-en="Learn Internet Usage" data-kn="ಇಂಟರ್ನೆಟ್ ಬಳಕೆಯನ್ನು ಕಲಿಯಿರಿ">Learn Internet Usage</span>
+      </a>
+      <a class="topic" href="#">
+        <span class="icon" aria-hidden="true">🏛️</span>
+        <span data-en="Learn Government Services" data-kn="ಸರ್ಕಾರಿ ಸೇವೆಗಳನ್ನು ಕಲಿಯಿರಿ">Learn Government Services</span>
+      </a>
+      <a class="topic" href="#">
+        <span class="icon" aria-hidden="true">🛡️</span>
+        <span data-en="Learn Online Safety" data-kn="ಆನ್‌ಲೈನ್ ಸುರಕ್ಷತೆಯನ್ನು ಕಲಿಯಿರಿ">Learn Online Safety</span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="footer">DigitalSaathi · Your digital friend</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
