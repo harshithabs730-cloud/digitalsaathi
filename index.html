@@ -4,7 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DigitalSaathi</title>
+  <meta
+    name="description"
+    content="DigitalSaathi helps everyone learn digital literacy and online safety in English and Kannada."
+  >
+  <title>DigitalSaathi - Digital Literacy for Everyone</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,120 +16,232 @@
   <!-- Top bar: name + language switch -->
   <header class="topbar">
     <div class="brand">DigitalSaathi</div>
+
     <div class="lang-switch" role="group" aria-label="Language">
-      <button id="btn-en" class="lang-btn active" type="button">English</button>
-      <button id="btn-kn" class="lang-btn" type="button">ಕನ್ನಡ</button>
+      <button
+        id="btn-en"
+        class="lang-btn active"
+        type="button"
+        aria-pressed="true"
+      >
+        English
+      </button>
+
+      <button
+        id="btn-kn"
+        class="lang-btn"
+        type="button"
+        aria-pressed="false"
+      >
+        ಕನ್ನಡ
+      </button>
     </div>
   </header>
 
   <main>
     <!-- Welcome -->
     <section class="welcome">
-      <h1 data-en="Digital Literacy for Everyone"
-          data-kn="ಎಲ್ಲರಿಗಾಗಿ ಡಿಜಿಟಲ್ ಸಾಕ್ಷರತೆ">
+      <h1
+        data-en="Digital Literacy for Everyone"
+        data-kn="ಎಲ್ಲರಿಗಾಗಿ ಡಿಜಿಟಲ್ ಸಾಕ್ಷರತೆ"
+      >
         Digital Literacy for Everyone
       </h1>
-      <p data-en="Choose what you want to learn."
-         data-kn="ನೀವು ಏನು ಕಲಿಯಬೇಕು ಎಂದು ಆಯ್ಕೆ ಮಾಡಿ.">
+
+      <p
+        data-en="Choose what you want to learn."
+        data-kn="ನೀವು ಏನು ಕಲಿಯಬೇಕು ಎಂದು ಆಯ್ಕೆ ಮಾಡಿ."
+      >
         Choose what you want to learn.
       </p>
     </section>
 
     <!-- Safety reminder -->
     <div class="safety" role="note">
-      <strong data-en="Remember:" data-kn="ನೆನಪಿಡಿ:">Remember:</strong>
-      <span data-en="Never share your UPI PIN or OTP with anyone."
-            data-kn="ನಿಮ್ಮ UPI ಪಿನ್ ಅಥವಾ OTP ಅನ್ನು ಯಾರೊಂದಿಗೂ ಹಂಚಿಕೊಳ್ಳಬೇಡಿ.">
+      <strong data-en="Remember:" data-kn="ನೆನಪಿಡಿ:">
+        Remember:
+      </strong>
+
+      <span
+        data-en="Never share your UPI PIN or OTP with anyone."
+        data-kn="ನಿಮ್ಮ UPI ಪಿನ್ ಅಥವಾ OTP ಅನ್ನು ಯಾರೊಂದಿಗೂ ಹಂಚಿಕೊಳ್ಳಬೇಡಿ."
+      >
         Never share your UPI PIN or OTP with anyone.
       </span>
     </div>
 
     <!-- Five learning topics -->
-    <section class="topics">
+    <section class="topics" aria-label="Learning topics">
+
       <a class="topic" href="#">
         <span class="icon" aria-hidden="true">📱</span>
-        <span data-en="Learn Smartphone Basics"
-              data-kn="ಸ್ಮಾರ್ಟ್‌ಫೋನ್ ಮೂಲಭೂತ ಅಂಶಗಳನ್ನು ಕಲಿಯಿರಿ">
+        <span
+          data-en="Learn Smartphone Basics"
+          data-kn="ಸ್ಮಾರ್ಟ್‌ಫೋನ್ ಮೂಲಭೂತ ಅಂಶಗಳನ್ನು ಕಲಿಯಿರಿ"
+        >
           Learn Smartphone Basics
         </span>
       </a>
 
       <a class="topic" href="#">
         <span class="icon" aria-hidden="true">💳</span>
-        <span data-en="Learn Online Payments"
-              data-kn="ಆನ್‌ಲೈನ್ ಪಾವತಿಗಳನ್ನು ಕಲಿಯಿರಿ">
+        <span
+          data-en="Learn Online Payments"
+          data-kn="ಆನ್‌ಲೈನ್ ಪಾವತಿಗಳನ್ನು ಕಲಿಯಿರಿ"
+        >
           Learn Online Payments
         </span>
       </a>
 
       <a class="topic" href="#">
         <span class="icon" aria-hidden="true">🌐</span>
-        <span data-en="Learn Internet Usage"
-              data-kn="ಇಂಟರ್ನೆಟ್ ಬಳಕೆಯನ್ನು ಕಲಿಯಿರಿ">
+        <span
+          data-en="Learn Internet Usage"
+          data-kn="ಇಂಟರ್ನೆಟ್ ಬಳಕೆಯನ್ನು ಕಲಿಯಿರಿ"
+        >
           Learn Internet Usage
         </span>
       </a>
 
       <a class="topic" href="#">
         <span class="icon" aria-hidden="true">🏛️</span>
-        <span data-en="Learn Government Services"
-              data-kn="ಸರ್ಕಾರಿ ಸೇವೆಗಳನ್ನು ಕಲಿಯಿರಿ">
+        <span
+          data-en="Learn Government Services"
+          data-kn="ಸರ್ಕಾರಿ ಸೇವೆಗಳನ್ನು ಕಲಿಯಿರಿ"
+        >
           Learn Government Services
         </span>
       </a>
 
       <a class="topic" href="#">
         <span class="icon" aria-hidden="true">🛡️</span>
-        <span data-en="Learn Online Safety"
-              data-kn="ಆನ್‌ಲೈನ್ ಸುರಕ್ಷತೆಯನ್ನು ಕಲಿಯಿರಿ">
+        <span
+          data-en="Learn Online Safety"
+          data-kn="ಆನ್‌ಲೈನ್ ಸುರಕ್ಷತೆಯನ್ನು ಕಲಿಯಿರಿ"
+        >
           Learn Online Safety
         </span>
       </a>
+
     </section>
 
     <!-- Digital Safety Quiz -->
     <section class="quiz" id="quiz">
-      <h2 data-en="Digital Safety Quiz"
-          data-kn="ಡಿಜಿಟಲ್ ಸುರಕ್ಷತಾ ರಸಪ್ರಶ್ನೆ">
+
+      <h2
+        data-en="Digital Safety Quiz"
+        data-kn="ಡಿಜಿಟಲ್ ಸುರಕ್ಷತಾ ರಸಪ್ರಶ್ನೆ"
+      >
         Digital Safety Quiz
       </h2>
 
-      <p data-en="Answer five questions, earn points, and learn how to stay safe online."
-         data-kn="ಐದು ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸಿ, ಅಂಕಗಳನ್ನು ಗಳಿಸಿ ಮತ್ತು ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಸುರಕ್ಷಿತವಾಗಿರಲು ಕಲಿಯಿರಿ.">
-        Answer five questions, earn points, and learn how to stay safe online.
+      <p
+        data-en="Answer ten questions, earn points, and learn how to stay safe online."
+        data-kn="ಹತ್ತು ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸಿ, ಅಂಕಗಳನ್ನು ಗಳಿಸಿ ಮತ್ತು ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಸುರಕ್ಷಿತವಾಗಿರಲು ಕಲಿಯಿರಿ."
+      >
+        Answer ten questions, earn points, and learn how to stay safe online.
       </p>
 
       <div class="quiz-card">
+
+        <!-- Question number and scores -->
         <div class="quiz-progress">
-          <p id="question-number">Question 1 of 5</p>
-          <p id="score-display">Points: 0</p>
+          <p id="question-number" aria-live="polite">
+            Question 1 of 10
+          </p>
+
+          <p id="score-display">
+            Points: 0
+          </p>
+
+          <p id="best-score-display">
+            Best: 0 / 100
+          </p>
         </div>
 
-        <div class="progress-track" aria-hidden="true">
-          <div id="progress-fill" class="progress-fill"></div>
+        <!-- Progress bar -->
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-label="Quiz progress"
+          aria-valuemin="0"
+          aria-valuemax="10"
+          aria-valuenow="0"
+          id="quiz-progress-bar"
+        >
+          <div
+            id="progress-fill"
+            class="progress-fill"
+          ></div>
         </div>
 
-        <h3 id="question">Loading question...</h3>
+        <!-- Current question -->
+        <h3 id="question">
+          Loading question...
+        </h3>
 
-        <div id="answer-options" class="answer-options"></div>
+        <!-- Answer buttons are created by JavaScript -->
+        <div
+          id="answer-options"
+          class="answer-options"
+        ></div>
 
-        <p id="quiz-feedback" role="status" aria-live="polite"></p>
+        <!-- Correct/incorrect feedback -->
+        <p
+          id="quiz-feedback"
+          role="status"
+          aria-live="polite"
+        ></p>
 
-        <button id="next-question" type="button" disabled>
+        <!-- Next question -->
+        <button
+          id="next-question"
+          type="button"
+          disabled
+        >
           Next Question
         </button>
 
+        <!-- Final results -->
         <div id="quiz-result" hidden>
+
           <h3 id="final-score"></h3>
+
+          <p id="result-percentage"></p>
+
+          <p
+            id="achievement-badge"
+            class="achievement-badge"
+            role="status"
+          ></p>
+
           <p id="badge-message"></p>
-          <button id="restart-quiz" type="button">Play Again</button>
+
+          <button
+            id="restart-quiz"
+            type="button"
+          >
+            Play Again
+          </button>
+
         </div>
+
       </div>
     </section>
   </main>
 
-  <footer class="footer">DigitalSaathi · Your digital friend</footer>
+  <!-- Footer -->
+  <footer class="footer">
+    <span
+      data-en="DigitalSaathi · Your digital friend"
+      data-kn="ಡಿಜಿಟಲ್‌ಸಾಥಿ · ನಿಮ್ಮ ಡಿಜಿಟಲ್ ಸ್ನೇಹಿತ"
+    >
+      DigitalSaathi · Your digital friend
+    </span>
+  </footer>
 
+  <!-- JavaScript -->
   <script src="script.js"></script>
+
 </body>
 </html>
