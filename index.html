@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="DigitalSaathi helps everyone learn digital literacy and online safety in English and Kannada."
+  >
+  <title>DigitalSaathi - Digital Literacy for Everyone</title>
+  <link rel="stylesheet" crossorigin href="/assets/index-BUHcOcYn.css">
+</head>
+<body>
+
+  <!-- Top bar: name, language switch, text size -->
+  <header class="topbar">
+    <div class="brand">DigitalSaathi</div>
+
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button id="btn-en" class="lang-btn active" type="button" aria-pressed="true">
+        English
+      </button>
+
+      <button id="btn-kn" class="lang-btn" type="button" aria-pressed="false">
+        ಕನ್ನಡ
+      </button>
+
+      <button id="btn-size" class="lang-btn" type="button"
+              aria-pressed="false" aria-label="Change text size">A+</button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Home dashboard -->
+    <section class="welcome" id="home">
+      <h1 data-en="Welcome to DigitalSaathi"
+          data-kn="ಡಿಜಿಟಲ್‌ಸಾಥಿಗೆ ಸ್ವಾಗತ">
+        Welcome to DigitalSaathi
+      </h1>
+
+      <p data-en="DigitalSaathi is your friendly digital guide. Learn to stay safe online, pay with UPI, use your smartphone and find public services, one small lesson at a time."
+         data-kn="ಡಿಜಿಟಲ್‌ಸಾಥಿ ನಿಮ್ಮ ಸ್ನೇಹಪರ ಡಿಜಿಟಲ್ ಮಾರ್ಗದರ್ಶಿ. ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಸುರಕ್ಷಿತವಾಗಿರಲು, UPI ಪಾವತಿ ಮಾಡಲು, ಸ್ಮಾರ್ಟ್‌ಫೋನ್ ಬಳಸಲು ಮತ್ತು ಸಾರ್ವಜನಿಕ ಸೇವೆಗಳನ್ನು ಪಡೆಯಲು, ಒಂದೊಂದು ಸಣ್ಣ ಪಾಠದ ಮೂಲಕ ಕಲಿಯಿರಿ.">
+        DigitalSaathi is your friendly digital guide. Learn to stay safe online, pay with UPI, use your smartphone and find public services, one small lesson at a time.
+      </p>
+
+      <a class="start-btn" href="#learning"
+         data-en="Start Learning →"
+         data-kn="ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ →">
+        Start Learning →
+      </a>
+    </section>
+
+    <!-- Safety reminder -->
+    <div class="safety" role="note">
+      <strong data-en="Remember:" data-kn="ನೆನಪಿಡಿ:">Remember:</strong>
+      <span data-en="Never share your UPI PIN or OTP with anyone."
+            data-kn="ನಿಮ್ಮ UPI ಪಿನ್ ಅಥವಾ OTP ಅನ್ನು ಯಾರೊಂದಿಗೂ ಹಂಚಿಕೊಳ್ಳಬೇಡಿ.">
+        Never share your UPI PIN or OTP with anyone.
+      </span>
+    </div>
+
+    <!-- Progress, points and badges -->
+    <section class="dashboard" aria-label="Your progress">
+      <div class="stat-grid">
+        <div class="stat-box">
+          <span class="stat-number" id="stat-points">0</span>
+          <span class="stat-label" id="stat-points-label">Points</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number" id="stat-lessons">0 / 4</span>
+          <span class="stat-label" id="stat-lessons-label">Lessons completed</span>
+        </div>
+      </div>
+
+      <p class="overall-label" id="overall-label"></p>
+      <div class="progress-track" role="progressbar" aria-label="Overall progress"
+           aria-valuemin="0" aria-valuemax="4" aria-valuenow="0" id="overall-bar">
+        <div class="progress-fill" id="overall-fill"></div>
+      </div>
+
+      <h2 id="badges-title">Your Badges</h2>
+      <div class="badge-list" id="badge-list"></div>
+    </section>
+
+    <!-- Digital Learning Modules -->
+    <section class="learning-section" id="learning">
+
+      <h2 data-en="Digital Learning Modules"
+          data-kn="ಡಿಜಿಟಲ್ ಕಲಿಕಾ ಘಟಕಗಳು">
+        Digital Learning Modules
+      </h2>
+
+      <p data-en="Learn digital skills for everyday life."
+         data-kn="ದೈನಂದಿನ ಜೀವನಕ್ಕೆ ಅಗತ್ಯವಾದ ಡಿಜಿಟಲ್ ಕೌಶಲ್ಯಗಳನ್ನು ಕಲಿಯಿರಿ.">
+        Learn digital skills for everyday life.
+      </p>
+
+      <div class="learning-grid">
+
+        <div class="learning-card">
+          <h3 data-en="🛡️ Online Safety & Scam Awareness"
+              data-kn="🛡️ ಆನ್‌ಲೈನ್ ಸುರಕ್ಷತೆ ಮತ್ತು ವಂಚನೆಗಳ ಅರಿವು">
+            🛡️ Online Safety & Scam Awareness
+          </h3>
+          <p data-en="Learn how to identify online scams and stay safe."
+             data-kn="ಆನ್‌ಲೈನ್ ವಂಚನೆಗಳನ್ನು ಗುರುತಿಸಿ ಸುರಕ್ಷಿತವಾಗಿರುವುದನ್ನು ಕಲಿಯಿರಿ.">
+            Learn how to identify online scams and stay safe.
+          </p>
+          <p class="lesson-status" id="status-safety"></p>
+          <button class="learning-btn" onclick="openLesson('safety')"
+                  data-en="Start Learning →" data-kn="ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ →">
+            Start Learning →
+          </button>
+        </div>
+
+        <div class="learning-card">
+          <h3 data-en="💳 UPI & Digital Payments"
+              data-kn="💳 UPI ಮತ್ತು ಡಿಜಿಟಲ್ ಪಾವತಿಗಳು">
+            💳 UPI & Digital Payments
+          </h3>
+          <p data-en="Learn how to make safe digital payments."
+             data-kn="ಸುರಕ್ಷಿತವಾಗಿ ಡಿಜಿಟಲ್ ಪಾವತಿಗಳನ್ನು ಮಾಡುವುದನ್ನು ಕಲಿಯಿರಿ.">
+            Learn how to make safe digital payments.
+          </p>
+          <p class="lesson-status" id="status-upi"></p>
+          <button class="learning-btn" onclick="openLesson('upi')"
+                  data-en="Start Learning →" data-kn="ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ →">
+            Start Learning →
+          </button>
+        </div>
+
+        <div class="learning-card">
+          <h3 data-en="📱 Smartphone & Internet Basics"
+              data-kn="📱 ಸ್ಮಾರ್ಟ್‌ಫೋನ್ ಮತ್ತು ಇಂಟರ್ನೆಟ್ ಮೂಲಭೂತಗಳು">
+            📱 Smartphone & Internet Basics
+          </h3>
+          <p data-en="Learn smartphone and internet basics."
+             data-kn="ಸ್ಮಾರ್ಟ್‌ಫೋನ್ ಮತ್ತು ಇಂಟರ್ನೆಟ್‌ನ ಮೂಲಭೂತ ವಿಷಯಗಳನ್ನು ಕಲಿಯಿರಿ.">
+            Learn smartphone and internet basics.
+          </p>
+          <p class="lesson-status" id="status-smartphone"></p>
+          <button class="learning-btn" onclick="openLesson('smartphone')"
+                  data-en="Start Learning →" data-kn="ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ →">
+            Start Learning →
+          </button>
+        </div>
+
+        <div class="learning-card">
+          <h3 data-en="🏛️ Useful Online Public Services"
+              data-kn="🏛️ ಉಪಯುಕ್ತ ಆನ್‌ಲೈನ್ ಸಾರ್ವಜನಿಕ ಸೇವೆಗಳು">
+            🏛️ Useful Online Public Services
+          </h3>
+          <p data-en="Learn about useful online government services."
+             data-kn="ಉಪಯುಕ್ತ ಆನ್‌ಲೈನ್ ಸರ್ಕಾರಿ ಸೇವೆಗಳ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ.">
+            Learn about useful online government services.
+          </p>
+          <p class="lesson-status" id="status-services"></p>
+          <button class="learning-btn" onclick="openLesson('services')"
+                  data-en="Start Learning →" data-kn="ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ →">
+            Start Learning →
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Lesson area -->
+      <div id="lesson-area" hidden>
+        <button type="button" onclick="closeLesson()"
+                data-en="Close Lesson" data-kn="ಪಾಠವನ್ನು ಮುಚ್ಚಿ">
+          Close Lesson
+        </button>
+
+        <h3 id="lesson-title"></h3>
+        <div id="lesson-content"></div>
+
+        <button id="complete-lesson" type="button" class="complete-btn">
+          Mark lesson as complete
+        </button>
+        <p id="lesson-message" role="status" aria-live="polite"></p>
+      </div>
+
+    </section>
+
+    <!-- Digital Learning Modules -->
+<!-- Digital Learning Modules -->
+<section class="learning-section" id="learning">
+
+    <h2 data-en="Digital Learning Modules"
+        data-kn="ಡಿಜಿಟಲ್ ಕಲಿಕಾ ಘಟಕಗಳು">
+        Digital Learning Modules
+    </h2>
+
+    <p data-en="Learn digital skills for everyday life."
+       data-kn="ದೈನಂದಿನ ಜೀವನಕ್ಕೆ ಅಗತ್ಯವಾದ ಡಿಜಿಟಲ್ ಕೌಶಲ್ಯಗಳನ್ನು ಕಲಿಯಿರಿ.">
+        Learn digital skills for everyday life.
+    </p>
+
+    <div class="learning-grid">
+
+        <div class="learning-card">
+            <h3 data-en="🛡️ Online Safety & Scam Awareness"
+                data-kn="🛡️ ಆನ್‌ಲೈನ್ ಸುರಕ್ಷತೆ ಮತ್ತು ವಂಚನೆಗಳ ಅರಿವು">
+                🛡️ Online Safety & Scam Awareness
+            </h3>
+
+            <p data-en="Learn how to identify online scams and stay safe."
+               data-kn="ಆನ್‌ಲೈನ್ ವಂಚನೆಗಳನ್ನು ಗುರುತಿಸಿ ಸುರಕ್ಷಿತವಾಗಿರುವುದನ್ನು ಕಲಿಯಿರಿ.">
+                Learn how to identify online scams and stay safe.
+            </p>
+
+            <button class="learning-btn"
+                    onclick="openLesson('safety')"
+                    data-en="Start Learning →"
+                    data-kn="ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ →">
+                Start Learning →
+            </button>
+        </div>
+
+        <div class="learning-card">
+            <h3 data-en="💳 UPI & Digital Payments"
+                data-kn="💳 UPI ಮತ್ತು ಡಿಜಿಟಲ್ ಪಾವತಿಗಳು">
+                💳 UPI & Digital Payments
+            </h3>
+
+            <p data-en="Learn how to make safe digital payments."
+               data-kn="ಸುರಕ್ಷಿತವಾಗಿ ಡಿಜಿಟಲ್ ಪಾವತಿಗಳನ್ನು ಮಾಡುವುದನ್ನು ಕಲಿಯಿರಿ.">
+                Learn how to make safe digital payments.
+            </p>
+
+            <button class="learning-btn"
+                    onclick="openLesson('upi')"
+                    data-en="Start Learning →"
+                    data-kn="ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ →">
+                Start Learning →
+            </button>
+        </div>
+
+        <div class="learning-card">
+            <h3 data-en="📱 Smartphone & Internet Basics"
+                data-kn="📱 ಸ್ಮಾರ್ಟ್‌ಫೋನ್ ಮತ್ತು ಇಂಟರ್ನೆಟ್ ಮೂಲಭೂತಗಳು">
+                📱 Smartphone & Internet Basics
+            </h3>
+
+            <p data-en="Learn smartphone and internet basics."
+               data-kn="ಸ್ಮಾರ್ಟ್‌ಫೋನ್ ಮತ್ತು ಇಂಟರ್ನೆಟ್‌ನ ಮೂಲಭೂತ ವಿಷಯಗಳನ್ನು ಕಲಿಯಿರಿ.">
+                Learn smartphone and internet basics.
+            </p>
+
+            <button class="learning-btn"
+                    onclick="openLesson('smartphone')"
+                    data-en="Start Learning →"
+                    data-kn="ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ →">
+                Start Learning →
+            </button>
+        </div>
+
+        <div class="learning-card">
+            <h3 data-en="🏛️ Useful Online Public Services"
+                data-kn="🏛️ ಉಪಯುಕ್ತ ಆನ್‌ಲೈನ್ ಸಾರ್ವಜನಿಕ ಸೇವೆಗಳು">
+                🏛️ Useful Online Public Services
+            </h3>
+
+            <p data-en="Learn about useful online government services."
+               data-kn="ಉಪಯುಕ್ತ ಆನ್‌ಲೈನ್ ಸರ್ಕಾರಿ ಸೇವೆಗಳ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ.">
+                Learn about useful online government services.
+            </p>
+
+            <button class="learning-btn"
+                    onclick="openLesson('services')"
+                    data-en="Start Learning →"
+                    data-kn="ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ →">
+                Start Learning →
+            </button>
+        </div>
+
+    </div>
+
+    <div id="lesson-area" hidden>
+        <button onclick="closeLesson()"
+                data-en="Close Lesson"
+                data-kn="ಪಾಠವನ್ನು ಮುಚ್ಚಿ">
+            Close Lesson
+        </button>
+
+        <h3 id="lesson-title"></h3>
+        <div id="lesson-content"></div>
+    </div>
+
+</section>
+    <!-- Digital Safety Quiz -->
+    <section class="quiz" id="quiz">
+
+      <h2 data-en="Digital Safety Quiz" data-kn="ಡಿಜಿಟಲ್ ಸುರಕ್ಷತಾ ರಸಪ್ರಶ್ನೆ">
+        Digital Safety Quiz
+      </h2>
+
+      <p data-en="Answer ten questions, earn points, and learn how to stay safe online."
+         data-kn="ಹತ್ತು ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸಿ, ಅಂಕಗಳನ್ನು ಗಳಿಸಿ ಮತ್ತು ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಸುರಕ್ಷಿತವಾಗಿರಲು ಕಲಿಯಿರಿ.">
+        Answer ten questions, earn points, and learn how to stay safe online.
+      </p>
+
+      <div class="quiz-card">
+
+        <div class="quiz-progress">
+          <p id="question-number" aria-live="polite">Question 1 of 10</p>
+          <p id="score-display">Points: 0</p>
+          <p id="best-score-display">Best: 0 / 100</p>
+        </div>
+
+        <div class="progress-track" role="progressbar" aria-label="Quiz progress"
+             aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"
+             id="quiz-progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+
+        <h3 id="question">Loading question...</h3>
+
+        <div id="answer-options" class="answer-options"></div>
+
+        <p id="quiz-feedback" role="status" aria-live="polite"></p>
+
+        <button id="next-question" type="button" disabled>Next Question</button>
+
+        <div id="quiz-result" hidden>
+          <h3 id="final-score"></h3>
+          <p id="result-percentage"></p>
+          <p id="achievement-badge" class="achievement-badge" role="status"></p>
+          <p id="badge-message"></p>
+          <button id="restart-quiz" type="button">Play Again</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span data-en="DigitalSaathi · Your digital friend"
+          data-kn="ಡಿಜಿಟಲ್‌ಸಾಥಿ · ನಿಮ್ಮ ಡಿಜಿಟಲ್ ಸ್ನೇಹಿತ">
+      DigitalSaathi · Your digital friend
+    </span>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
