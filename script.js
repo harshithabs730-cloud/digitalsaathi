@@ -1,5 +1,4 @@
-
-/* DigitalSaathi: Bilingual Digital Safety Quiz */
+/* DigitalSaathi: Bilingual Digital Safety Quiz, Lessons, Progress and Badges */
 
 const btnEn = document.getElementById("btn-en");
 const btnKn = document.getElementById("btn-kn");
@@ -24,6 +23,7 @@ let currentLanguage = "en";
 let currentQuestion = 0;
 let score = 0;
 let answered = false;
+let currentTopic = null;
 
 const TOTAL_POINTS = 100;
 const POINTS_PER_QUESTION = 10;
@@ -56,6 +56,253 @@ function getBestScore() {
   return Math.max(0, Math.min(TOTAL_POINTS, saved));
 }
 
+/* ===== Progress, points, badges and text size ===== */
+const PROGRESS_KEY = "saathiProgress";
+const SIZE_KEY = "saathiBigText";
+const LESSON_POINTS = 20;
+const TOPICS = ["safety", "upi", "smartphone", "services"];
+
+const uiText = {
+  en: {
+    points: "Points",
+    lessons: "Lessons completed",
+    overall: "Overall progress: {n} of {t} lessons",
+    badges: "Your Badges",
+    completeBtn: "Mark lesson as complete",
+    completed: "✔ Lesson completed",
+    done: "✔ Completed",
+    notDone: "Not completed yet",
+    msg: "Well done! +{p} points.",
+    newBadge: "New badge:",
+    locked: "Locked"
+  },
+  kn: {
+    points: "ಅಂಕಗಳು",
+    lessons: "ಪೂರ್ಣಗೊಂಡ ಪಾಠಗಳು",
+    overall: "ಒಟ್ಟು ಪ್ರಗತಿ: {t} ಪಾಠಗಳಲ್ಲಿ {n} ಪೂರ್ಣ",
+    badges: "ನಿಮ್ಮ ಬ್ಯಾಡ್ಜ್‌ಗಳು",
+    completeBtn: "ಪಾಠ ಪೂರ್ಣಗೊಂಡಿದೆ ಎಂದು ಗುರುತಿಸಿ",
+    completed: "✔ ಪಾಠ ಪೂರ್ಣಗೊಂಡಿದೆ",
+    done: "✔ ಪೂರ್ಣಗೊಂಡಿದೆ",
+    notDone: "ಇನ್ನೂ ಪೂರ್ಣಗೊಂಡಿಲ್ಲ",
+    msg: "ಅಭಿನಂದನೆಗಳು! +{p} ಅಂಕಗಳು.",
+    newBadge: "ಹೊಸ ಬ್ಯಾಡ್ಜ್:",
+    locked: "ಲಾಕ್ ಆಗಿದೆ"
+  }
+};
+
+const badgeDefs = [
+  {
+    id: "first",
+    icon: "🌱",
+    en: "First Step",
+    kn: "ಮೊದಲ ಹೆಜ್ಜೆ",
+    test: function (p) { return p.lessons.length >= 1; }
+  },
+  {
+    id: "safety",
+    icon: "🛡️",
+    en: "Scam Spotter",
+    kn: "ವಂಚನೆ ಗುರುತಿಸುವವರು",
+    test: function (p) { return p.lessons.includes("safety"); }
+  },
+  {
+    id: "upi",
+    icon: "💳",
+    en: "UPI Pro",
+    kn: "UPI ಪರಿಣತ",
+    test: function (p) { return p.lessons.includes("upi"); }
+  },
+  {
+    id: "phone",
+    icon: "📱",
+    en: "Phone Pal",
+    kn: "ಫೋನ್ ಸ್ನೇಹಿತ",
+    test: function (p) { return p.lessons.includes("smartphone"); }
+  },
+  {
+    id: "gov",
+    icon: "🏛️",
+    en: "Service Star",
+    kn: "ಸೇವಾ ತಾರೆ",
+    test: function (p) { return p.lessons.includes("services"); }
+  },
+  {
+    id: "quiz",
+    icon: "⭐",
+    en: "Quiz Star",
+    kn: "ರಸಪ್ರಶ್ನೆ ತಾರೆ",
+    test: function () { return getBestScore() >= 80; }
+  },
+  {
+    id: "all",
+    icon: "🏆",
+    en: "Digital Saathi",
+    kn: "ಡಿಜಿಟಲ್ ಸಾಥಿ",
+    test: function (p) { return p.lessons.length >= TOPICS.length; }
+  }
+];
+
+function setText(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text;
+}
+
+function getProgress() {
+  try {
+    const saved = JSON.parse(getSavedValue(PROGRESS_KEY, '{"lessons":[]}'));
+    const list = Array.isArray(saved.lessons) ? saved.lessons : [];
+    return {
+      lessons: list.filter(function (x) { return TOPICS.includes(x); })
+    };
+  } catch (error) {
+    return { lessons: [] };
+  }
+}
+
+function saveProgress(progress) {
+  saveValue(PROGRESS_KEY, JSON.stringify(progress));
+}
+
+/* Points = 20 per completed lesson + best quiz score (cannot be farmed) */
+function getTotalPoints() {
+  return getProgress().lessons.length * LESSON_POINTS + getBestScore();
+}
+
+function renderDashboard() {
+  const ui = uiText[currentLanguage];
+  const progress = getProgress();
+  const done = progress.lessons.length;
+  const total = TOPICS.length;
+
+  setText("stat-points", getTotalPoints());
+  setText("stat-points-label", ui.points);
+  setText("stat-lessons", done + " / " + total);
+  setText("stat-lessons-label", ui.lessons);
+  setText("badges-title", ui.badges);
+  setText(
+    "overall-label",
+    ui.overall.replace("{n}", done).replace("{t}", total)
+  );
+
+  const fill = document.getElementById("overall-fill");
+  const bar = document.getElementById("overall-bar");
+  if (fill) fill.style.width = (done / total) * 100 + "%";
+  if (bar) bar.setAttribute("aria-valuenow", String(done));
+
+  const list = document.getElementById("badge-list");
+  if (!list) return;
+  list.replaceChildren();
+
+  badgeDefs.forEach(function (badge) {
+    const unlocked = badge.test(progress);
+    const item = document.createElement("div");
+    const icon = document.createElement("span");
+    const name = document.createElement("span");
+
+    item.className = "badge-item" + (unlocked ? "" : " locked");
+    icon.className = "badge-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = unlocked ? badge.icon : "🔒";
+    name.className = "badge-name";
+    name.textContent =
+      badge[currentLanguage] + (unlocked ? "" : " (" + ui.locked + ")");
+
+    item.appendChild(icon);
+    item.appendChild(name);
+    list.appendChild(item);
+  });
+}
+
+function renderLessonStatuses() {
+  const ui = uiText[currentLanguage];
+  const progress = getProgress();
+
+  TOPICS.forEach(function (id) {
+    const el = document.getElementById("status-" + id);
+    if (!el) return;
+
+    const isDone = progress.lessons.includes(id);
+    el.textContent = isDone ? ui.done : ui.notDone;
+    el.classList.toggle("done", isDone);
+  });
+}
+
+function updateCompleteButton() {
+  const button = document.getElementById("complete-lesson");
+  if (!button) return;
+
+  const ui = uiText[currentLanguage];
+  const isDone =
+    currentTopic && getProgress().lessons.includes(currentTopic);
+
+  button.textContent = isDone ? ui.completed : ui.completeBtn;
+  button.disabled = Boolean(isDone);
+}
+
+const completeButton = document.getElementById("complete-lesson");
+
+if (completeButton) {
+  completeButton.addEventListener("click", function () {
+    if (!currentTopic) return;
+
+    const progress = getProgress();
+    if (progress.lessons.includes(currentTopic)) return;
+
+    const before = badgeDefs
+      .filter(function (b) { return b.test(progress); })
+      .map(function (b) { return b.id; });
+
+    progress.lessons.push(currentTopic);
+    saveProgress(progress);
+
+    const fresh = badgeDefs.filter(function (b) {
+      return b.test(progress) && !before.includes(b.id);
+    });
+
+    const ui = uiText[currentLanguage];
+    let message = ui.msg.replace("{p}", LESSON_POINTS);
+
+    if (fresh.length) {
+      message +=
+        " " +
+        ui.newBadge +
+        " " +
+        fresh
+          .map(function (b) { return b.icon + " " + b[currentLanguage]; })
+          .join(", ");
+    }
+
+    setText("lesson-message", message);
+    renderDashboard();
+    renderLessonStatuses();
+    updateCompleteButton();
+  });
+}
+
+/* Text size toggle */
+function applyTextSize(big) {
+  document.documentElement.classList.toggle("big-text", big);
+
+  const button = document.getElementById("btn-size");
+  if (button) {
+    button.textContent = big ? "A−" : "A+";
+    button.setAttribute("aria-pressed", String(big));
+  }
+
+  saveValue(SIZE_KEY, big ? "1" : "0");
+}
+
+const sizeButton = document.getElementById("btn-size");
+
+if (sizeButton) {
+  sizeButton.addEventListener("click", function () {
+    applyTextSize(!document.documentElement.classList.contains("big-text"));
+  });
+}
+
+applyTextSize(getSavedValue(SIZE_KEY, "0") === "1");
+
 /* English and Kannada quiz content */
 const quizText = {
   en: {
@@ -86,8 +333,8 @@ const quizText = {
       "A UPI PIN authorises a payment you make. You do not need to enter it to receive money.",
       "Use a strong, unique password for every account and enable two-step verification when available.",
       "Contact your bank or payment app through its official support channel immediately.",
-      "Check the sender and website carefully before opening an attachment or link.",
-      "Never share private information or your live location publicly without a good reason.",
+      "Real Indian government websites end with gov.in. Check the address before entering personal details.",
+      "DigiLocker is a Government of India service for storing documents digitally.",
       "Use your device's official settings to install updates and fix security issues.",
       "Block and report suspicious or harassing accounts, and tell a trusted adult if you need help.",
       "Use official websites or trusted app stores instead of unfamiliar download links."
@@ -140,22 +387,22 @@ const quizText = {
         correct: 1
       },
       {
-        q: "You receive an unexpected email attachment. What should you do?",
+        q: "Which website address ending is used by real Indian government websites?",
         a: [
-          "Open it immediately",
-          "Check the sender and verify it before opening",
-          "Forward it to your contacts"
+          "A name ending in .xyz",
+          "A name ending in .gov.in",
+          "Any ending is fine"
         ],
         correct: 1
       },
       {
-        q: "Which is a safer way to use social media?",
+        q: "Which service keeps digital copies of your Aadhaar and other documents safely?",
         a: [
-          "Post passwords in a private group",
-          "Accept every unknown friend request",
-          "Limit personal information and review privacy settings"
+          "A game app",
+          "DigiLocker",
+          "A photo editing app"
         ],
-        correct: 2
+        correct: 1
       },
       {
         q: "Why should you update your phone and apps?",
@@ -215,8 +462,8 @@ const quizText = {
       "ನೀವು ಮಾಡುವ ಪಾವತಿಯನ್ನು ದೃಢೀಕರಿಸಲು UPI PIN ಬಳಸಲಾಗುತ್ತದೆ. ಹಣ ಸ್ವೀಕರಿಸಲು ಅದನ್ನು ನಮೂದಿಸುವ ಅಗತ್ಯವಿಲ್ಲ.",
       "ಪ್ರತಿ ಖಾತೆಗೆ ಬಲವಾದ, ಪ್ರತ್ಯೇಕ ಪಾಸ್‌ವರ್ಡ್ ಬಳಸಿ. ಸಾಧ್ಯವಾದರೆ ಎರಡು ಹಂತದ ದೃಢೀಕರಣವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ.",
       "ತಕ್ಷಣವೇ ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ಅಥವಾ ಪಾವತಿ ಆ್ಯಪ್‌ನ ಅಧಿಕೃತ ಸಹಾಯವಾಣಿಯನ್ನು ಸಂಪರ್ಕಿಸಿ.",
-      "ಲಗತ್ತನ್ನು ಅಥವಾ ಲಿಂಕ್ ತೆರೆಯುವ ಮೊದಲು ಕಳುಹಿಸಿದವರ ವಿವರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.",
-      "ಅಗತ್ಯವಿಲ್ಲದೆ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿ ಅಥವಾ ನಿಮ್ಮ ನೇರ ಸ್ಥಳವನ್ನು ಸಾರ್ವಜನಿಕವಾಗಿ ಹಂಚಿಕೊಳ್ಳಬೇಡಿ.",
+      "ನಿಜವಾದ ಭಾರತ ಸರ್ಕಾರಿ ವೆಬ್‌ಸೈಟ್‌ಗಳು gov.in ನಲ್ಲಿ ಕೊನೆಗೊಳ್ಳುತ್ತವೆ. ವೈಯಕ್ತಿಕ ಮಾಹಿತಿ ನೀಡುವ ಮೊದಲು ವಿಳಾಸ ಪರಿಶೀಲಿಸಿ.",
+      "DigiLocker ಭಾರತ ಸರ್ಕಾರದ ಸೇವೆಯಾಗಿದ್ದು ದಾಖಲೆಗಳನ್ನು ಡಿಜಿಟಲ್ ರೂಪದಲ್ಲಿ ಸಂಗ್ರಹಿಸುತ್ತದೆ.",
       "ಭದ್ರತಾ ಸಮಸ್ಯೆಗಳನ್ನು ಸರಿಪಡಿಸಲು ಅಧಿಕೃತ ಸೆಟ್ಟಿಂಗ್‌ಗಳ ಮೂಲಕ ಸಾಧನ ಮತ್ತು ಆ್ಯಪ್‌ಗಳನ್ನು ನವೀಕರಿಸಿ.",
       "ಸಂದೇಹಾಸ್ಪದ ಅಥವಾ ಕಿರುಕುಳ ನೀಡುವ ಖಾತೆಗಳನ್ನು ನಿರ್ಬಂಧಿಸಿ ಮತ್ತು ವರದಿ ಮಾಡಿ. ಅಗತ್ಯವಿದ್ದರೆ ವಿಶ್ವಾಸಾರ್ಹ ವಯಸ್ಕರ ಸಹಾಯ ಪಡೆಯಿರಿ.",
       "ಅಪರಿಚಿತ ಡೌನ್‌ಲೋಡ್ ಲಿಂಕ್‌ಗಳ ಬದಲು ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್‌ಗಳು ಅಥವಾ ವಿಶ್ವಾಸಾರ್ಹ ಆ್ಯಪ್ ಸ್ಟೋರ್‌ಗಳನ್ನು ಬಳಸಿ."
@@ -269,22 +516,22 @@ const quizText = {
         correct: 1
       },
       {
-        q: "ಅನಿರೀಕ್ಷಿತ ಇಮೇಲ್ ಲಗತ್ತು ಬಂದರೆ ಏನು ಮಾಡಬೇಕು?",
+        q: "ನಿಜವಾದ ಭಾರತ ಸರ್ಕಾರಿ ವೆಬ್‌ಸೈಟ್‌ಗಳು ಯಾವ ಅಂತ್ಯ ಹೊಂದಿರುತ್ತವೆ?",
         a: [
-          "ತಕ್ಷಣ ತೆರೆಯಿರಿ",
-          "ತೆರೆಯುವ ಮೊದಲು ಕಳುಹಿಸಿದವರನ್ನು ಪರಿಶೀಲಿಸಿ",
-          "ನಿಮ್ಮ ಸಂಪರ್ಕಗಳಿಗೆ ಕಳುಹಿಸಿ"
+          ".xyz ಎಂದು ಕೊನೆಗೊಳ್ಳುವ ಹೆಸರು",
+          ".gov.in ಎಂದು ಕೊನೆಗೊಳ್ಳುವ ಹೆಸರು",
+          "ಯಾವುದೇ ಅಂತ್ಯ ಸರಿ"
         ],
         correct: 1
       },
       {
-        q: "ಸಾಮಾಜಿಕ ಜಾಲತಾಣವನ್ನು ಸುರಕ್ಷಿತವಾಗಿ ಬಳಸುವುದು ಹೇಗೆ?",
+        q: "ನಿಮ್ಮ ಆಧಾರ್ ಮತ್ತು ಇತರ ದಾಖಲೆಗಳ ಡಿಜಿಟಲ್ ಪ್ರತಿಗಳನ್ನು ಸುರಕ್ಷಿತವಾಗಿ ಇಡುವ ಸೇವೆ ಯಾವುದು?",
         a: [
-          "ಖಾಸಗಿ ಗುಂಪಿನಲ್ಲಿ ಪಾಸ್‌ವರ್ಡ್ ಹಂಚಿಕೊಳ್ಳಿ",
-          "ಎಲ್ಲ ಅಪರಿಚಿತರ ಸ್ನೇಹ ವಿನಂತಿ ಸ್ವೀಕರಿಸಿ",
-          "ವೈಯಕ್ತಿಕ ಮಾಹಿತಿಯನ್ನು ಮಿತಿಗೊಳಿಸಿ, ಗೌಪ್ಯತಾ ಸೆಟ್ಟಿಂಗ್ ಪರಿಶೀಲಿಸಿ"
+          "ಗೇಮ್ ಆ್ಯಪ್",
+          "DigiLocker",
+          "ಫೋಟೋ ಎಡಿಟಿಂಗ್ ಆ್ಯಪ್"
         ],
-        correct: 2
+        correct: 1
       },
       {
         q: "ನಿಮ್ಮ ಫೋನ್ ಮತ್ತು ಆ್ಯಪ್‌ಗಳನ್ನು ಏಕೆ ನವೀಕರಿಸಬೇಕು?",
@@ -315,6 +562,7 @@ const quizText = {
       }
     ]
   }
+
 };
 
 /* Change the page language */
@@ -341,6 +589,10 @@ function setLanguage(lang) {
   saveValue(LANGUAGE_KEY, lang);
 
   renderQuestion();
+  renderDashboard();
+  renderLessonStatuses();
+
+  if (currentTopic) openLesson(currentTopic, true);
 }
 
 /* Update score labels */
@@ -353,17 +605,10 @@ function updateScoreDisplays() {
     bestScoreDisplay.textContent =
       `${t.best}: ${getBestScore()} / ${TOTAL_POINTS}`;
   }
+
+  renderDashboard();
 }
 
-    renderQuestion();
-
-  document.querySelectorAll("#learning [data-en]").forEach(function (element) {
-    const translatedText = element.getAttribute("data-" + lang);
-
-    if (translatedText !== null) {
-      element.textContent = translatedText;
-    }
-  });
 /* Update accessible progress information */
 function updateProgress(percent, completedQuestions) {
   progressFill.style.width = `${percent}%`;
@@ -551,13 +796,7 @@ btnKn.addEventListener("click", function () {
 });
 
 /* Load the saved language or default to English */
-let savedLanguage = "en";
-
-try {
-  savedLanguage = localStorage.getItem("saathiLang") || "en";
-} catch (error) {
-  // Use English if local storage is unavailable.
-}
+let savedLanguage = getSavedValue(LANGUAGE_KEY, "en");
 
 if (savedLanguage !== "kn") {
   savedLanguage = "en";
@@ -565,8 +804,8 @@ if (savedLanguage !== "kn") {
 
 setLanguage(savedLanguage);
 
-
-function openLesson(topic) {
+/* ===== Lessons ===== */
+function openLesson(topic, keepPosition) {
     const title = document.getElementById("lesson-title");
     const content = document.getElementById("lesson-content");
     const area = document.getElementById("lesson-area");
@@ -755,19 +994,26 @@ function openLesson(topic) {
         }
     };
 
-   const language = localStorage.getItem("saathiLang") || "en";
     const selectedLesson = lessons[topic];
 
     if (!selectedLesson) {
         return;
     }
 
-    title.textContent = selectedLesson[language].title;
-    content.innerHTML = selectedLesson[language].content;
+    currentTopic = topic;
+
+    title.textContent = selectedLesson[currentLanguage].title;
+    content.innerHTML = selectedLesson[currentLanguage].content;
     area.hidden = false;
-    area.scrollIntoView({ behavior: "smooth" });
+    updateCompleteButton();
+
+    if (!keepPosition) {
+        setText("lesson-message", "");
+        area.scrollIntoView({ behavior: "smooth" });
+    }
 }
 
 function closeLesson() {
+    currentTopic = null;
     document.getElementById("lesson-area").hidden = true;
 }

@@ -1,0 +1,66 @@
+export const LANGS = [
+  { code: "en", label: "English", speech: "en-IN" },
+  { code: "hi", label: "हिन्दी", speech: "hi-IN" },
+  { code: "kn", label: "ಕನ್ನಡ", speech: "kn-IN" },
+];
+
+const dict = {
+  en: {
+    appName: "DigitalSaathi", tagline: "Your digital friend",
+    nav_home: "Home", nav_lessons: "Lessons", nav_chat: "Ask Saathi",
+    nav_scam: "Scam Shield", nav_dashboard: "Dashboard",
+    hero_title: "Your friend for the digital world",
+    hero_sub: "Learn smartphones, UPI and online safety, step by step, at your own pace.",
+    start: "Start learning", ask: "Ask Saathi", big_text: "Large text", language: "Language",
+    lessons_done: "Lessons done", streak: "Day streak", scams_checked: "Messages checked",
+    minutes: "Minutes learned", weekly: "This week's learning", overall: "Overall progress",
+    skills: "Skills", badges: "Badges", recent: "Recent activity",
+    step_of: "Step", next: "Next", back: "Back", finish: "Finish lesson", listen: "Listen",
+    speak: "Speak", listening: "Listening...", type_msg: "Type or tap the mic and ask anything",
+    send: "Send", check: "Check message",
+    paste_here: "Paste a suspicious message, link or call script here",
+    risk_low: "Looks safe", risk_medium: "Be careful", risk_high: "Likely a scam",
+    reset: "Reset progress",
+    welcome_chat: "Namaste! I am Saathi. Ask me about your phone, UPI, WhatsApp or online safety.",
+  },
+  hi: {
+    appName: "डिजिटल साथी", tagline: "आपका डिजिटल दोस्त",
+    nav_home: "होम", nav_lessons: "पाठ", nav_chat: "साथी से पूछें",
+    nav_scam: "ठगी जांच", nav_dashboard: "डैशबोर्ड",
+    hero_title: "डिजिटल दुनिया में आपका साथी",
+    hero_sub: "स्मार्टफोन, UPI और ऑनलाइन सुरक्षा सीखें, कदम दर कदम, अपनी गति से।",
+    start: "सीखना शुरू करें", ask: "साथी से पूछें", big_text: "बड़े अक्षर", language: "भाषा",
+    lessons_done: "पूरे हुए पाठ", streak: "लगातार दिन", scams_checked: "जांचे गए संदेश",
+    minutes: "सीखने के मिनट", weekly: "इस हफ्ते की पढ़ाई", overall: "कुल प्रगति",
+    skills: "कौशल", badges: "बैज", recent: "हाल की गतिविधि",
+    step_of: "चरण", next: "आगे", back: "पीछे", finish: "पाठ पूरा करें", listen: "सुनें",
+    speak: "बोलें", listening: "सुन रहा हूँ...", type_msg: "लिखें या माइक दबाकर कुछ भी पूछें",
+    send: "भेजें", check: "संदेश जांचें",
+    paste_here: "संदिग्ध संदेश, लिंक या कॉल की बात यहाँ चिपकाएँ",
+    risk_low: "सुरक्षित लगता है", risk_medium: "सावधान रहें", risk_high: "ठगी की संभावना",
+    reset: "प्रगति रीसेट करें",
+    welcome_chat: "नमस्ते! मैं साथी हूँ। फोन, UPI, WhatsApp या ऑनलाइन सुरक्षा के बारे में पूछिए।",
+  },
+  kn: {
+    appName: "ಡಿಜಿಟಲ್ ಸಾಥಿ", tagline: "ನಿಮ್ಮ ಡಿಜಿಟಲ್ ಗೆಳೆಯ",
+    nav_home: "ಮುಖಪುಟ", nav_lessons: "ಪಾಠಗಳು", nav_chat: "ಸಾಥಿಯನ್ನು ಕೇಳಿ",
+    nav_scam: "ವಂಚನೆ ಪರಿಶೀಲನೆ", nav_dashboard: "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+    hero_title: "ಡಿಜಿಟಲ್ ಜಗತ್ತಿನಲ್ಲಿ ನಿಮ್ಮ ಸಂಗಾತಿ",
+    hero_sub: "ಸ್ಮಾರ್ಟ್‌ಫೋನ್, UPI ಮತ್ತು ಆನ್‌ಲೈನ್ ಸುರಕ್ಷತೆಯನ್ನು ಹಂತ ಹಂತವಾಗಿ ಕಲಿಯಿರಿ.",
+    start: "ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ", ask: "ಸಾಥಿಯನ್ನು ಕೇಳಿ", big_text: "ದೊಡ್ಡ ಅಕ್ಷರ", language: "ಭಾಷೆ",
+    lessons_done: "ಮುಗಿದ ಪಾಠಗಳು", streak: "ನಿರಂತರ ದಿನಗಳು", scams_checked: "ಪರಿಶೀಲಿಸಿದ ಸಂದೇಶಗಳು",
+    minutes: "ಕಲಿತ ನಿಮಿಷಗಳು", weekly: "ಈ ವಾರದ ಕಲಿಕೆ", overall: "ಒಟ್ಟು ಪ್ರಗತಿ",
+    skills: "ಕೌಶಲ್ಯಗಳು", badges: "ಬ್ಯಾಡ್ಜ್‌ಗಳು", recent: "ಇತ್ತೀಚಿನ ಚಟುವಟಿಕೆ",
+    step_of: "ಹಂತ", next: "ಮುಂದೆ", back: "ಹಿಂದೆ", finish: "ಪಾಠ ಮುಗಿಸಿ", listen: "ಕೇಳಿ",
+    speak: "ಮಾತನಾಡಿ", listening: "ಕೇಳುತ್ತಿದ್ದೇನೆ...", type_msg: "ಟೈಪ್ ಮಾಡಿ ಅಥವಾ ಮೈಕ್ ಒತ್ತಿ ಏನಾದರೂ ಕೇಳಿ",
+    send: "ಕಳುಹಿಸಿ", check: "ಸಂದೇಶ ಪರಿಶೀಲಿಸಿ",
+    paste_here: "ಅನುಮಾನಾಸ್ಪದ ಸಂದೇಶ ಅಥವಾ ಲಿಂಕ್ ಇಲ್ಲಿ ಅಂಟಿಸಿ",
+    risk_low: "ಸುರಕ್ಷಿತವಾಗಿ ಕಾಣುತ್ತದೆ", risk_medium: "ಎಚ್ಚರಿಕೆ ಇರಲಿ", risk_high: "ವಂಚನೆ ಸಾಧ್ಯತೆ ಹೆಚ್ಚು",
+    reset: "ಪ್ರಗತಿ ಮರುಹೊಂದಿಸಿ",
+    welcome_chat: "ನಮಸ್ಕಾರ! ನಾನು ಸಾಥಿ. ಫೋನ್, UPI, WhatsApp ಅಥವಾ ಆನ್‌ಲೈನ್ ಸುರಕ್ಷತೆ ಬಗ್ಗೆ ಕೇಳಿ.",
+  },
+};
+
+export function t(lang, key) {
+  return (dict[lang] && dict[lang][key]) || dict.en[key] || key;
+}
